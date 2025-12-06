@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- TASKBAR -->
+  <div class="taskbar">
+    <div class="icons">
+      <div class="icon" onclick="toggleStart()">🏳️</div>
+      <div class="icon" onclick="openApp('fileExplorer')">📁</div>
+      <div class="icon" onclick="openApp('browserApp')">🌐</div>
+      <div class="icon" onclick="openApp('settingsApp')">🛠️</div>
+    </div>
+  </div>
+
+  <!-- FILE EXPLORER -->
+  <div id="fileExplorer" class="app-window" style="display:none;">
+    <div class="window-header">
+      <h3>My Computer</h3>
+      <div class="window-controls">
+        <button class="small" onclick="closeApp('fileExplorer')">✕</button>
+      </div>
+    </div>
+
+    <div class="window-body">
+      <p>Actions:</p>
+
+      <div class="actions">
+        <button onclick="openCodePage()">Get Code</button>
+        <button onclick="downloadCode()">Download</button>
+        <button onclick="toggleFiles()">Open Folder</button>
+      </div>
+
+      <div id="fileList" class="file-list" style="display:none;">
+        <div class="file">📁 index.html</div>
+        <div class="file">📁 style.css</div>
+        <div class="file">📁 script.js</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BROWSER -->
+  <div id="browserApp" class="app-window" style="display:none;">
+    <div class="window-header">
+      <h3>Browser</h3>
+      <div class="window-controls">
+        <button class="small" onclick="closeApp('browserApp')">✕</button>
+      </div>
+    </div>
+
+    <div class="window-body">
+
+      <!-- BUTTON MENU -->
+      <div class="browser-buttons">
+        <button onclick="showYT()" class="br-btn">📺 My YouTube</button>
+        <button onclick="showFriends()" class="br-btn">👥 Friends</button>
+        <button onclick="showAbout()" class="br-btn">ℹ️ About</button>
+      </div>
+
+      <!-- SEARCH -->
+      <div class="browser-search">
+        <input type="text" id="browserSearch" placeholder="Search or type URL...">
+        <button onclick="searchNow()" class="search-btn">🔍</button>
+      </div>
+
+      <!-- FLOATING BOX -->
+      <div id="browserBox" class="browser-box" style="display:none;">
+        <h2 id="boxTitle"></h2>
+        <p id="boxContent"></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SETTINGS -->
+  <div id="settingsApp" class="app-window" style="display:none;">
+    <div class="window-header">
+      <h3>Connections</h3>
+      <div class="window-controls">
+        <button class="small" onclick="closeApp('settingsApp')">✕</button>
+      </div>
+    </div>
+
+    <div class="window-body">
+      <button class="set-btn" onclick="openApp('wifiWindow')">📶 WiFi</button>
+      <button class="set-btn" onclick="openApp('bluetoothWindow')">🔵 Bluetooth</button>
+    </div>
+  </div>
+
+  <!-- WIFI WINDOW -->
+  <div id="wifiWindow" class="app-window" style="display:none;">
+    <div class="window-header">
+      <h3>WiFi Networks</h3>
+      <div class="window-controls">
+        <button class="small" onclick="closeApp('wifiWindow')">✕</button>
+      </div>
+    </div>
+
+    <div class="window-body">
+      <p>Available Networks:</p>
+
+      <div class="wifi-list">
+        <div class="wifi" onclick="connectWifi('Aarav 5G')">📶 Aarav 5G</div>
+        <div class="wifi" onclick="connectWifi('Aaliya 5G')">📶 Aaliya 5G</div>
+        <div class="wifi" onclick="connectWifi('Home WiFi')">📶 Home WiFi</div>
+        <div class="wifi" onclick="connectWifi('JioFiber 5452')">📶 JioFiber 5452</div>
+        <div class="wifi" onclick="connectWifi('Random_WiFi_23')">📶 Random_WiFi_23</div>
+      </div>
+
+      <!-- POPUP BOX -->
+      <div id="wifiPopup" class="popup-box" style="display:none;">
+        <h3 id="wifiName"></h3>
+        <p>Connecting...</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BLUETOOTH WINDOW -->
+  <div id="bluetoothWindow" class="app-window" style="display:none;">
+    <div class="window-header">
+      <h3>Bluetooth Devices</h3>
+      <div class="window-controls">
+        <button class="small" onclick="closeApp('bluetoothWindow')">✕</button>
+      </div>
+    </div>
+
+    <div class="window-body">
+      <p>Available Devices:</p>
+
+      <div class="bt-list">
+        <div class="bt-item" onclick="connectBT('Windows 10')">💻 Windows 10</div>
+        <div class="bt-item" onclick="connectBT('Aarav’s Earphones')">🎧 Aarav’s Earphones</div>
+        <div class="bt-item" onclick="connectBT('Pods Pro')">🎵 Pods Pro</div>
+        <div class="bt-item" onclick="connectBT('Realme Phone')">📱 Realme Phone</div>
+        <div class="bt-item" onclick="connectBT('Sony WH1000XM4')">🎧 Sony WH1000XM4</div>
+      </div>
+
+      <!-- POPUP -->
+      <div id="btPopup" class="popup-box" style="display:none;">
+        <h3 id="btName"></h3>
+        <p>Connecting...</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- START MENU -->
+  <div class="start-menu" id="startMenu">
+    <div class="menu-title">Start</div>
+    <p>Portfolio Of Aarav</p>
+  </div>
+
+  <!-- SEARCH BAR -->
+  <div class="search-bar">
+    <input id="searchBox" onkeyup="searchApps()" placeholder="Search apps..." />
+  </div>
+
+  <!-- APPS LIST -->
+  <div id="appsWindow" class="apps-window">
+    <h2>Apps</h2>
+    <ul id="appsList">
+      <li onclick="openApp('fileExplorer')">📁 My Computer</li>
+      <li onclick="openApp('aboutApp')">ℹ️ About Us</li>
+      <li onclick="openApp('settingsApp')">⚙️ Connections</li>
+      <li onclick="openApp('storeApp')">🛒 App Store</li>
+    </ul>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="aboutApp" class="app-window" style="display:none;">
+    <div class="window-header">
+      <h3>About Us</h3>
+      <div class="window-controls">
+        <button class="small" onclick="closeApp('aboutApp')">✕</button>
+      </div>
+    </div>
+    <div class="window-body">
+      <p>Created by Aarav.</p>
+    </div>
+  </div>
+
+  <!-- STORE -->
+  <div id="storeApp" class="app-window" style="display:none;">
+    <div class="window-header">
+      <h3>App Store</h3>
+      <div class="window-controls">
+        <button class="small" onclick="closeApp('storeApp')">✕</button>
+      </div>
+    </div>
+
+    <div class="window-body">
+      <p>Install new apps here.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

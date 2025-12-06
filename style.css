@@ -1,0 +1,187 @@
+body {
+  margin: 0;
+  background: url('https://images.wallpapersden.com/image/download/windows-11-in-4k_bG1lZW2UmZqaraWkpJRobWllrWdpZWU.jpg') no-repeat center/cover;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Taskbar */
+.taskbar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  backdrop-filter: blur(30px);
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.icons {
+  display: flex;
+  gap: 25px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.icon:hover {
+  background: rgba(255,255,255,0.7);
+}
+
+/* Start Menu */
+.start-menu {
+  position: absolute;
+  left: 50%;
+  bottom: 70px;
+  transform: translateX(-50%);
+  width: 380px;
+  height: 480px;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(30px);
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 20px;
+  display: none;
+}
+
+.menu-title {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+/* Search Bar */
+.search-bar {
+  position:absolute;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  width:400px;
+}
+
+.search-bar input {
+  width:100%;
+  padding:12px;
+  border-radius:20px;
+  border:none;
+  outline:none;
+  backdrop-filter:blur(20px);
+  background:rgba(255,255,255,0.4);
+  font-size:16px;
+  color:black;
+}
+
+/* Placeholder color */
+.search-bar input::placeholder {
+  color:black;
+}
+
+/* Apps Window */
+.apps-window {
+  position:absolute;
+  top:100px;
+  left:50%;
+  transform:translateX(-50%);
+  width:450px;
+  height:400px;
+  background:rgba(255,255,255,0.25);
+  backdrop-filter:blur(20px);
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.4);
+  padding:20px;
+  display:none;
+}
+
+#appsList li {
+  font-size:18px;
+  line-height:30px;
+}
+
+/* --- existing styles above (keep them) --- */
+
+/* Unified Windows look for start menu and app windows */
+.start-menu, .apps-window, .app-window {
+  background: rgba(255,255,255,0.28);
+  backdrop-filter: blur(35px) saturate(180%);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.45);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  animation: fadeUp 0.28s ease;
+}
+
+/* app window layout */
+.app-window {
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 420px;
+  height: 420px;
+  padding: 12px;
+  display: none;
+  overflow: auto;
+}
+
+/* header */
+.window-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:8px;
+}
+.window-header h3{
+  margin:0;
+  font-size:18px;
+}
+.window-controls .small{
+  border:none;
+  background:transparent;
+  font-size:14px;
+  cursor:pointer;
+}
+
+/* body */
+.window-body { padding:6px; color:#000; }
+.actions { margin:8px 0; display:flex; gap:8px; flex-wrap:wrap; }
+.actions button {
+  padding:8px 12px;
+  border-radius:8px;
+  border: none;
+  cursor:pointer;
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+.file-list { margin-top:10px; background:rgba(255,255,255,0.06); padding:8px; border-radius:8px; }
+.file { padding:6px 8px; border-radius:6px; margin-bottom:4px; background:rgba(255,255,255,0.04); }
+
+.code-snippet {
+  margin-top:10px;
+  background:#0a0a0a;
+  color:#dfe8ff;
+  padding:10px;
+  border-radius:8px;
+  font-family: monospace;
+  font-size:13px;
+  white-space:pre-wrap;
+}
+
+/* animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translate(-50%, 18px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
